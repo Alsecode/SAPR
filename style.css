@@ -1,0 +1,277 @@
+body {
+   background-color: #283747;
+   font-family: 'Lora', serif;
+}
+
+.inp {
+   text-align: center;
+}
+
+
+#result {
+   color: #F2F4F4;
+}
+
+table {
+   margin: auto;
+   text-align: center;
+   width: 600px;
+   table-layout: fixed;
+   color: #F2F4F4;
+}
+
+.main {
+   margin: auto;
+   text-align: center;
+   margin-bottom: 45px;
+}
+
+caption {
+   font-size: 20px;
+}
+
+col {
+   width: 200px;
+}
+
+tr {
+   width: 250px;
+   height: 100px;
+   color: #D5D8DC;
+}
+
+.container {
+   display: flex;
+   justify-content: center;
+   padding-left: 35px;
+   margin: 0px auto;
+   cursor: pointer;
+   font-size: 22px;
+   user-select: none;
+   color: #F2F4F4;
+}
+
+.str {
+   width: 60px;
+}
+
+
+.loads {
+   margin: 0px auto;
+}
+
+.addRow {
+   background: none;
+   border: none;
+   width: 30px;
+   height: 30px;
+   margin-right: 10px;
+}
+
+.addRow:hover {
+   cursor: pointer;
+}
+
+.delRow {
+   background: none;
+   border: none;
+   width: 30px;
+   height: 30px;
+}
+
+.delRow:hover {
+   cursor: pointer;
+}
+
+
+#txt {
+   display: flex;
+   justify-content: center;
+   color: #F2F4F4;
+   font-size: 20px;
+}
+
+#canv {
+   border: 2px solid black;
+   margin-top: 30px;
+}
+
+#picFleft,
+#picFright,
+#picQleft,
+#picQright,
+#leftSupport,
+#rightSupport {
+   display: none;
+}
+
+#saveRows {
+   background-color: #29445e;
+   color: #F2F4F4;
+   width: 300px;
+   height: 60px;
+   font-size: 20px;
+}
+
+#saveRows:hover {
+   cursor: pointer;
+   width: 350px;
+   height: 75px;
+}
+
+
+#saveLocal {
+   display: flex;
+   justify-content: center;
+   margin-top: 30px;
+}
+
+#uploadRows {
+   background-color: #29445e;
+   color: #F2F4F4;
+   width: 350px;
+   height: 60px;
+   font-size: 20px;
+}
+
+#uploadRows:hover {
+   cursor: pointer;
+   width: 400px;
+   height: 75px;
+}
+
+
+#uploadLocal {
+   display: flex;
+   justify-content: center;
+   margin-top: 30px;
+}
+
+
+#proc {
+   display: flex;
+   justify-content: center;
+   margin-top: 30px;
+}
+
+#processorButton {
+   background-color: #29445e;
+   color: #F2F4F4;
+   width: 400px;
+   height: 60px;
+   font-size: 20px;
+}
+
+#processorButton:hover {
+   cursor: pointer;
+   width: 450px;
+   height: 75px;
+}
+
+#drawButton {
+   background-color: #29445e;
+   color: #F2F4F4;
+   width: 450px;
+   height: 60px;
+   font-size: 22px;
+}
+
+#drawButton:hover {
+   cursor: pointer;
+   width: 500px;
+   height: 75px;
+}
+
+#draw {
+   display: flex;
+   justify-content: center;
+   margin-top: 30px;
+}
+
+.capt {
+   display: flex;
+   justify-content: center;
+   font-size: 28px;
+}
+
+.dimension {
+   font-style: italic;
+   font-size: 24px;
+}
+
+#Nx {
+   color: lightblue;
+}
+
+#Sigmax {
+   color: lightcoral;
+}
+
+#Ux {
+   color: lightgreen;
+}
+
+.section {
+   display: flex;
+   justify-content: center;
+   color: #F2F4F4;
+   font-size: 20px;
+}
+
+
+.neededL {
+   width: 70px;
+   height: 20px;
+}
+
+#sectionData {
+   text-align: center;
+   color: #F2F4F4;
+   font-size: 20px;
+}
+
+#cutL {
+   display: flex;
+   justify-content: center;
+   margin-top: 20px;
+}
+
+#cutLButton {
+   background-color: #29445e;
+   color: #F2F4F4;
+   width: 200px;
+   height: 50px;
+   font-size: 22px;
+}
+
+#cutLButton:hover {
+   cursor: pointer;
+   width: 250px;
+   height: 55px;
+}
+
+#tabular {
+   margin-top: 20px;
+   border: 1px solid #F2F4F4;
+   visibility: hidden;
+}
+
+#tabular td {
+   border: 1px solid #F2F4F4;
+}
+
+#resultTable {
+   border: 1px solid #F2F4F4;
+   visibility: hidden;
+}
+
+.str2 {
+   width: 70px;
+   height: 25px;
+   font-size: 18px;
+}
+
+.canvases {
+   display: flex;
+   justify-content: center;
+}

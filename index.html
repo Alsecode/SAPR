@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="style.css">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+   <title>САПР</title>
+   <width=device-width, initial-scale=1>
+      </width>
+</head>
+
+<body>
+
+   <div class="main">
+      <table id="RodsListTop" contenteditable="false">
+         <caption>Ввод данных о стержнях</caption>
+         <tr>
+
+            <th colspan="3">
+               Характеристики стержня
+            </th>
+            <th colspan="2">Материал стержня</th>
+         </tr>
+         <tr>
+            <td class="NR">Номер стержня (i)</td>
+            <td class="L">Длина стержня (L)</td>
+            <td class="A">Площадь поперечного сечения (A)</td>
+            <td class="E">Модуль упругости (E)</td>
+            <td class="sigma">Допускаемое напряжение (σ)</td>
+         </tr>
+      </table>
+
+      <table id="RodsList">
+         <tr>
+            <td>1</td>
+            <td><input type="number" min="0" onkeydown="if (event.keyCode == 107 || 
+            event.keyCode == 109) return false" ; class="str"> </td>
+
+            <td><input type="number" min="0" onkeydown="if (event.keyCode == 107 || 
+            event.keyCode == 109) return false" class="str"> </td>
+
+            <td><input type="number" min="0" onkeydown="if (event.keyCode == 107 || 
+            event.keyCode == 109) return false" class="str"> </td>
+
+            <td><input type="number" min="0" onkeydown="if (event.keyCode == 107 ||
+             event.keyCode == 109) return false" class="str"> </td>
+         </tr>
+      </table>
+      <button class="addRow" onclick="appendRow('RodsList', 'plus')">
+         <img src="pictures/plusIcon.PNG" width="30px" height="30px"></button>
+      <button class="delRow" onclick="dltRow('RodsList')">
+         <img src="pictures/minusIcon.PNG" width="30px" height="30px"></button>
+      <hr />
+   </div>
+
+   <div class="main">
+      <table>
+         <caption>Ввод сосредоточенных нагрузок</caption>
+         <tr>
+            <td>Номер узла (i)</td>
+            <td>Сосредоточенная нагрузка (F)</td>
+         </tr>
+      </table>
+
+      <table id="listF">
+         <tr>
+            <td>1</td>
+            <td><input type="number" class="str"> </td>
+         </tr>
+      </table>
+
+      <button class="addRow" onclick="appendRow('listF', 'plusAndMinus')">
+         <img src="pictures/plusIcon.PNG" width="30px" height="30px"></button>
+      <button class="delRow" onclick="dltRow('listF')">
+         <img src="pictures/minusIcon.PNG" width="30px" height="30px"></button>
+      <hr />
+   </div>
+
+   <div class="main">
+      <table>
+         <caption>Ввод погонных нагрузок</caption>
+         <tr>
+            <td>Номер стержня (i)</td>
+            <td>Погонная нагрузка (q)</td>
+         </tr>
+      </table>
+
+      <table id="listQ">
+         <tr>
+            <td>1</td>
+            <td><input type="number" class="str"> </td>
+         </tr>
+      </table>
+
+      <button class="addRow" onclick="appendRow('listQ', 'plusAndMinus')">
+         <img src="pictures/plusIcon.PNG" width="30px" height="30px"></button>
+      <button class="delRow" onclick="dltRow('listQ')">
+         <img src="pictures/minusIcon.PNG" width="30px" height="30px"></button>
+      <hr />
+   </div>
+
+
+   <div class="support">
+      <p id="txt">Нулевые кинематические граничные условия (жёсткие опоры): </p>
+      <label class="container">Опора слева
+         <input type="checkbox" checked="checked" id="left">
+         <span class="checkmark"></span>
+      </label>
+
+      <label class="container">Опора справа
+         <input type="checkbox" id="right">
+         <span class="checkmark"></span>
+      </label>
+   </div>
+
+   <div id="saveLocal">
+      <button id="saveRows" onclick="save()">Сохранить в Локальное Хранилище</button>
+   </div>
+
+   <div id="uploadLocal">
+      <button id="uploadRows" onclick="upload()">Загрузить из Локального
+         Хранилища</button>
+   </div>
+
+   <div id="proc">
+      <button id="processorButton" onclick="processor()">Процессор</button>
+   </div>
+
+   <div id="draw">
+      <button id="drawButton" onclick="drawing()">Визуализировать</button>
+   </div>
+
+   <div class="newww">
+      <canvas id="canv" width="1450" height="500">
+      </canvas>
+   </div>
+
+   <div class="capt">
+      <p id="Nx">Эпюра N<sub>x</sub>, <span class="dimension">qL</span></p>
+   </div>
+
+   <div class="newww">
+      <canvas id="canv2" width="1450" height="500">
+      </canvas>
+   </div>
+
+   <div class="capt">
+      <p id="Sigmax">Эпюра σ<sub>x</sub>, <span class="dimension">qL/A</span></p>
+   </div>
+   <div class="newww">
+      <canvas id="canv3" width="1450" height="500">
+      </canvas>
+   </div>
+
+   <div class="capt">
+      <p id="Ux">Эпюра u<sub>x</sub>, <span class="dimension">qL^2/EA</span></p>
+   </div>
+
+   <div class="canvases">
+      <canvas id="canv4" width="1450" height="500">
+      </canvas>
+   </div>
+   <hr />
+
+   <div class="section">
+      <p>Компоненты напряжённо-деформированного <br>состояния в конкретном сечении конструкции</p>
+   </div>
+   <div id="sectionData">
+      <div class="inpL">
+         <p>Номер стержня: </p><input type="number" min="1" class="neededL" id="numberI">
+      </div>
+
+      <div class="inpL">
+         <p>Необходимый разрез стержня (от 0 до длины стержня L): </p><input type="number" min="0"
+            onkeydown="if (event.keyCode == 107 || event.keyCode == 109) return false" ; class="neededL" id="cut">
+      </div>
+
+      <div id="cutL">
+         <button id="cutLButton" onclick="sect()">Рассчитать</button>
+      </div>
+
+      <div class="resN">
+         <p>Усилие N<sub>x</sub> : </p><input type="number" min="0" class="neededL" id="cutN" readonly>
+      </div>
+
+      <div class="resSigma">
+         <p>Напряжение σ<sub>x</sub> : </p><input type="number" min="0" readonly class="neededL" id="cutSigma">
+      </div>
+
+      <div class="resU">
+         <p>Перемещение u<sub>x</sub> : </p><input type="number" min="0" readonly class="neededL" id="cutU">
+      </div>
+   </div>
+   <hr />
+
+   <div class="section">
+      <p>Результаты расчёта в табличном виде</p>
+   </div>
+   <div id="sectionData">
+      <div class="numOfTabl">
+         <p>Номер стержня: </p><input type="number" min="1" class="neededL" id="numI">
+      </div>
+
+      <div class="splitStep">
+         <p>Шаг: </p><input type="number" min="0" class="neededL" id="step">
+      </div>
+
+      <div id="cutL">
+         <button id="cutLButton" onclick="tt()">Вывести таблицу</button>
+      </div>
+
+      <table id="tabular" contenteditable="false">
+         <tr>
+            <td class="NR">№</td>
+            <td class="L">x</td>
+            <td class="A">N</td>
+            <td class="E">σ</td>
+            <td class="sigma">u</td>
+            <td class="sigma">[σ]</td>
+         </tr>
+      </table>
+      <table id="resultTable">
+         <tr>
+            <td>1</td>
+            <td><input type="number" readonly class="str2"> </td>
+            <td><input type="number" readonly class="str2"> </td>
+            <td><input type="number" readonly class="str2"> </td>
+            <td><input type="number" readonly class="str2"> </td>
+            <td><input type="number" readonly class="str2"> </td>
+         </tr>
+      </table>
+
+      <img id="picFleft" src="pictures/red_arrow_left.png">
+      <img id="picFright" src="pictures/red_arrow_right.png">
+      <img id="picQleft" src="pictures/green_arrow_left.png">
+      <img id="picQright" src="pictures/green_arrow_right.png">
+      <img id="leftSupport" src="pictures/leftSupportN.PNG">
+      <img id="rightSupport" src="pictures/rightSupportN.PNG">
+
+      <script src="script.js"></script>
+
+</body>
+
+</html>
